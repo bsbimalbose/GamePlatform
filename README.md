@@ -1,1 +1,1 @@
-"# GamePlatform" 
+# GamePlatform
