@@ -5,9 +5,6 @@ const router = express.Router();
 router.post('/create', async (req, res) => {
   try {
     const { firstName, lastName, age, picture, email } = req.body;
-    if (!email?.trim()) {
-      throw new Error('email is mandatory');
-    }
     const user = await User.create({
       firstName,
       lastName,
@@ -15,8 +12,7 @@ router.post('/create', async (req, res) => {
       email,
       picture,
     });
-    const savedUser = await user.save();
-    res.status(201).json(savedUser);
+    res.status(201).json(user);
   } catch (err) {
     if (err.code === 11000) {
       res.json({ error: 'duplicate entry', detail: err.keyValue });

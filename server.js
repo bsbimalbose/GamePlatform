@@ -14,6 +14,7 @@ server.use(morgan('tiny'));
 //mongodb
 mongoose.connect(connectionURL, { useNewUrlParser: true });
 const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'db connection error:'));
 db.once('open', () => console.log('connected to the db'));
 
